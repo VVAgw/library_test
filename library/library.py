@@ -10,10 +10,14 @@ class Library:
 
     def register_user(self, user: User) -> None:
         self.users.append(user)
-        raise NotImplementedError("тут должен быть метод")
+        #raise NotImplementedError("тут должен быть метод")
 
     def remove_user(self, user_id: int) -> None:
-        raise NotImplementedError("тут должен быть метод")
+        for user in self.users:
+            if user.id == user_id:
+                self.users.remove(user)
+                break
+        #raise NotImplementedError("тут должен быть метод")
 
     def add_book(self, book: Book) -> None:
         raise NotImplementedError("тут должен быть метод")
