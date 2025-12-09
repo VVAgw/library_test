@@ -9,6 +9,7 @@ class Library:
         self.users: List[User] = []
 
     def register_user(self, user: User) -> None:
+        self.users.append(user)
         raise NotImplementedError("тут должен быть метод")
 
     def remove_user(self, user_id: int) -> None:
