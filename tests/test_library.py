@@ -1,4 +1,6 @@
-
+from library.book import Book
+from library.user import User
+from library.library import Library
 
 def test_register_user_basic():
     libr = Library("Моя библиотека")
