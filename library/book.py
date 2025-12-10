@@ -5,4 +5,4 @@ class Book:
     id: int
     title: str
     autor: str
-    # добавить флаг доступности
+    is_avaliable: bool

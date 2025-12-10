@@ -24,3 +24,9 @@ class Library:
 
     def remove_book(self, book_id: int) -> None:
         raise NotImplementedError("тут должен быть метод")
+
+    def lend_book(self, book_id: int, user_id: int, due_date: date):
+        raise NotImplementedError("тут должен быть метод")
+
+    def return_book(self, book_id: int):
+        raise NotImplementedError("тут должен быть метод")
