@@ -6,3 +6,4 @@ class Book:
     title: str
     autor: str
     is_avaliable: bool
+    active_record: None
