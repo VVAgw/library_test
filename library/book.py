@@ -1,9 +1,9 @@
-from dataclasses import dataclass
 
-@dataclass
+
 class Book:
-    id: int
-    title: str
-    autor: str
-    is_avaliable: bool
-    active_record: None
+    def __init__(self, id: int, title: str, autor: str):
+        self.id = id
+        self.title = title
+        self.autor = autor
+        self.is_available = True
+        self.active_record = None
