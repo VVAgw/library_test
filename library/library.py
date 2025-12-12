@@ -25,11 +25,18 @@ class Library:
     def remove_book(self, book_id: int) -> None:
         raise NotImplementedError("тут должен быть метод")
     
-    # функция поиска книги приветная 
+    # функция поиска книги - приватная 
     def find_book(self, book_id):
         for book in self.books:
             if book.id == book_id:
                 return book
+        return None
+    
+    # функция поиска пользователя - приватная
+    def find_user(self, user_id):
+        for user in user:
+            if user.id == user_id:
+                return user
         return None
 
     def lend_book(self, book_id: int, user_id: int, due_date: date):
