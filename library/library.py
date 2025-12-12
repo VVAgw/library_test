@@ -38,14 +38,28 @@ class Library:
             if user.id == user_id:
                 return user
         return None
-
+    
+    # выдача книги
     def lend_book(self, book_id: int, user_id: int, due_date: date):
-        rc = BorrowRecor(book_id=book_id, user_id=user_id, due_date=due_date)
-        usr = self.users[user_id]
-        usr.borrow_book(book)
-        book = self.books[book_id]
-        book.is_avaliable = False
-        book.active_record = rc
+        book = self.find_book(book_id)
+        if not book:
+            print(f"Указанной книги не существует!")
+            return
 
+        user = self.find_user(user_id)
+        if not user:
+            print(f'Указанного пользователя не существует!')
+            return
+
+        if book.is_available:
+            record = BorrowRecord(book_id=book_id, user_id=user_id, due_date=due_date)
+        else:
+            print(f'Указанная книга занята!')
+            return
+        
+        user.borrow_book(record)
+        book.is_available = False
+        book.active_record = record
+    
     def return_book(self, book_id: int):
         raise NotImplementedError("тут должен быть метод")
