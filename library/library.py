@@ -1,5 +1,7 @@
+from datetime import date
 from typing import List
 from .book import Book
+from .borrow_record import BorrowRecord
 from .user import User
 
 class Library:
@@ -14,13 +16,13 @@ class Library:
 
     def remove_user(self, user_id: int) -> None:
         for user in self.users:
-            if user.id == user_id:
+            if user.user_id == user_id:
                 self.users.remove(user)
                 break
         #raise NotImplementedError("тут должен быть метод")
 
     def add_book(self, book: Book) -> None:
-        raise NotImplementedError("тут должен быть метод")
+        self.books.append(book)
 
     def remove_book(self, book_id: int) -> None:
         raise NotImplementedError("тут должен быть метод")
@@ -34,8 +36,8 @@ class Library:
     
     # функция поиска пользователя - приватная
     def find_user(self, user_id):
-        for user in user:
-            if user.id == user_id:
+        for user in self.users:
+            if user.user_id == user_id:
                 return user
         return None
     
