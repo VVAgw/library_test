@@ -24,9 +24,21 @@ class Library:
 
     def remove_book(self, book_id: int) -> None:
         raise NotImplementedError("тут должен быть метод")
+    
+    # функция поиска книги приветная 
+    def find_book(self, book_id):
+        for book in self.books:
+            if book.id == book_id:
+                return book
+        return None
 
     def lend_book(self, book_id: int, user_id: int, due_date: date):
-        raise NotImplementedError("тут должен быть метод")
+        rc = BorrowRecor(book_id=book_id, user_id=user_id, due_date=due_date)
+        usr = self.users[user_id]
+        usr.borrow_book(book)
+        book = self.books[book_id]
+        book.is_avaliable = False
+        book.active_record = rc
 
     def return_book(self, book_id: int):
         raise NotImplementedError("тут должен быть метод")
