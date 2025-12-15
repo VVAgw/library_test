@@ -5,3 +5,6 @@ class BorrowRecord:
         self.book_id = book_id
         self.user_id = user_id
         self.due_date = due_date
+
+    def is_overdue(self) -> bool:
+        return date.today() > self.due_date
