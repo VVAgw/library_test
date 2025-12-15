@@ -63,5 +63,30 @@ class Library:
         book.is_available = False
         book.active_record = record
     
+    # возврат книги
     def return_book(self, book_id: int):
-        raise NotImplementedError("тут должен быть метод")
+        book = self.find_book(book_id)
+        if not book:
+            print (f'Указанной книги не существует')
+            return
+        
+        record = book.active_record
+        if not record:
+            print('Книга не была выдана')
+            return
+
+        user = self.find_user(record.user_id)
+        if not user:
+            print(f'Указанный пользователь не существует')
+            return
+
+        # удаление у пользователя объекта книги
+        for record_book in user.borrowed_books:
+            if record_book.book_id == book_id:
+                user.borrowed_books.remove(record_book)
+                break
+
+        book.is_available = True
+        book.active_record = None
+        print(f'Книга возвращена в библиотеку')
+
