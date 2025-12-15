@@ -13,9 +13,8 @@ def test_return_book_bosic():
 
     due = date(2025, 1, 1)
     libr.lend_book(book_id=4, user_id=3, due_date=due)
-
     libr.return_book(book_id=4)
 
     assert book.is_available is True
     assert book.active_record is None
-    assert len(user.arrwed_books) == 0
+    assert len(user.borrowed_books) == 0
