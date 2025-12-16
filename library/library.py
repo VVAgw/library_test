@@ -71,6 +71,11 @@ class Library:
             return
         
         record = book.active_record
+        if record is None:
+            print("Книга не была выдана")
+            return
+        if record.is_overdue():
+            print("Книга возвращена с просрочкой")
         if not record:
             print('Книга не была выдана')
             return
