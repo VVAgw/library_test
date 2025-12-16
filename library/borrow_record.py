@@ -8,3 +8,10 @@ class BorrowRecord:
 
     def is_overdue(self) -> bool:
         return date.today() > self.due_date
+
+    def calculate_fine(self, daily_rate: int) -> int:
+        if not self.is_overdue():
+            return 0
+
+        days_overdue = (date.today() - self.due_date).days
+        return days_overdue * daily_rate

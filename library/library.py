@@ -74,8 +74,11 @@ class Library:
         if record is None:
             print("Книга не была выдана")
             return
+        
         if record.is_overdue():
-            print("Книга возвращена с просрочкой")
+            fine = record.calculate_fine(daily_rate=10)
+            print(f"Книга возвращена с просрочкой. Штраф: {fine}")
+        
         if not record:
             print('Книга не была выдана')
             return
