@@ -19,4 +19,13 @@ def test_borrow_record_not_overdue():
 
     assert overdue.is_overdue() is False
 
+def test_borrow_record_fine_calculation():
+    record = BorrowRecord(
+        book_id=1,
+        user_id=1,
+        due_date=date.today() - timedelta(days=3)
+    )
 
+    fine = record.calculate_fine(daily_rate=10)
+
+    assert fine == 30
